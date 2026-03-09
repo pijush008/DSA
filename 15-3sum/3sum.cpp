@@ -1,39 +1,78 @@
 class Solution {
 public:
     vector<vector<int>> threeSum(vector<int>& nums) {
-        int n = nums.size();
-
-        vector<vector<int>> res;
-        sort(nums.begin(),nums.end());
-
-        for (int i = 0; i < n - 2; i++) {
-            int lt = i + 1;
-            int rt = n - 1;
-
-            if (i>0 && nums[i] == nums[i-1])
-                continue;
 
 
-            while (lt < rt) {
-                 int sum = nums[i] + nums[lt] + nums[rt];
-                if (sum == 0) {
-                    res.push_back({nums[i], nums[lt], nums[rt]});
+int n= nums.size();
 
-                    while (lt < rt && nums[lt] == nums[lt + 1]) {
-                        lt++;
-                    }
-                    while (lt < rt && nums[rt] == nums[rt - 1]) {
-                        rt--;
-                    }
-                    lt++;
-                    rt--;
-                } else if (sum > 0) {
-                    rt--;
-                } else {
-                    lt++;
-                }
-            }
-        }
-        return res;
+
+
+
+sort(nums.begin(),nums.end());
+
+vector<vector<int>>ans;
+
+for(int i=0;i<n-2;i++){
+int j=i+1;
+int k=n-1;
+
+if(i>0 && nums[i]==nums[i-1]){
+    continue;
+}
+    while(j<k){
+if(nums[i]+nums[j]+nums[k]==0){
+        ans.push_back({nums[i],nums[j],nums[k]});
+
+        while(j<k && nums[j]==nums[j+1]) j++;
+        while(j<k && nums[k]==nums[k-1]) k--;
+        j++;
+        k--;
+    }else if(nums[i]+nums[j]+nums[k]>0){
+        k--;
+    }else{
+        j++;
+    }
+    }
+    
+}
+
+return ans;
+
     }
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
